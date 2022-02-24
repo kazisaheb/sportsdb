@@ -2,8 +2,10 @@ let input = document.getElementById('input')
 
 var myVar;
 function loader() {
-  if (input.value != '')
-    document.getElementById("loader").style.display = "block";
+  if (input.value == '') {
+    return
+  }
+  document.getElementById("loader").style.display = "block";
   myVar = setTimeout(showPage, 3000);
 }
 function showPage() {
@@ -14,9 +16,11 @@ function showPage() {
 
 //Load and display sports
 players = async () => {
+  if (input.value == '') {
+    return
+  }
   let displaySports = document.getElementById('displaySports')
-  if (input.value != '')
-    displaySports.innerHTML = ''
+  displaySports.innerHTML = ''
   res = await fetch('https://www.thesportsdb.com/api/v1/json/2/all_sports.php')
   data = await res.json()
 
